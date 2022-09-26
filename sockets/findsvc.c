@@ -117,6 +117,7 @@ main(int argc, char *argv[])
 	hint.ai_canonname = NULL;
 	hint.ai_addr = NULL;
 	hint.ai_next = NULL;
+
 	if ((err = getaddrinfo(argv[1], argv[2], &hint, &ailist)) != 0)
 		err_quit("getaddrinfo error: %s", gai_strerror(err));
 	for (aip = ailist; aip != NULL; aip = aip->ai_next) {
@@ -134,5 +135,17 @@ main(int argc, char *argv[])
 		}
 		printf("\n");
 	}
+	// struct protoent *  proto;
+	// if((proto = getprotobynumber(ailist->ai_protocol))==NULL){
+	// 	perror("get proto failed");
+	// 	exit(1);
+	// } 
+	// printf("proto: %s\n",proto->p_name);
+	// struct  servent * serv;
+	// if((serv = getservent())==NULL) {
+	// 	perror("get serv failed");
+	// 	exit(1);
+	// }
+	// printf("serv: %s,%d,%s,proto: %s\n",serv->s_name,serv->s_port,serv->s_proto,proto->p_name);
 	exit(0);
 }
